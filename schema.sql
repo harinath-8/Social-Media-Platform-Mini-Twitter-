@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS `post_likes` (
+  `id` UUID PRIMARY KEY,
+  `post_id` UUID NOT NULL,
+  `user_id` UUID NOT NULL,
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`post_id`) REFERENCES `posts`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS `comment_likes` (
+  `id` UUID PRIMARY KEY,
+  `comment_id` UUID NOT NULL,
+  `user_id` UUID NOT NULL,
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`comment_id`) REFERENCES `comments`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+);
